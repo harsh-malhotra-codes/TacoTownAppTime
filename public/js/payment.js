@@ -1,3 +1,5 @@
+import { API_URL } from './config.js';
+
 // Payment Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize payment page
@@ -444,16 +446,8 @@ async function saveOrderToBackend(orderId, orderData) {
 
         console.log('Sending order to backend:', backendOrderData);
 
-        // Determine the correct endpoint based on environment
-        let endpoint;
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            // Local development - use local server
-            endpoint = '/api/orders';
-        } else {
-            // Production - use Netlify functions
-            endpoint = '/.netlify/functions/orders';
-        }
-
+        // Use the centralized API_URL from config.js
+        const endpoint = `${API_URL}/api/orders`;
         console.log('Using endpoint:', endpoint);
 
         // Send to backend

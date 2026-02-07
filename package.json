@@ -4,7 +4,7 @@
   "description": "A modern, responsive taco delivery website with an interactive menu, cart system, and smooth animations.",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
