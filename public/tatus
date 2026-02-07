@@ -1,0 +1,3 @@
+[33mab1f786[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m Complete Vercel deployment fix: Add public directory with all static files and update vercel.json
+[33maf4ffc1[m[33m ([m[1;31morigin/master[m[33m)[m Fix Vercel deployment: Export app for serverless, update vercel.json routes
+[33mc7c79b8[m Initial deployment: Taco Town website with admin panel, order management, and review system

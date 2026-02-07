@@ -1,0 +1,602 @@
+/* Payment Page Styles */
+.payment-section {
+    padding: 6rem 0 4rem;
+    background-color: #0A0A0A;
+    min-height: 100vh;
+}
+
+.payment-section .container {
+    max-width: 1000px;
+}
+
+/* Progress Bar */
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ccc;
+}
+
+.progress-step.completed .step-number {
+    background-color: var(--primary-color);
+    color: #000;
+    border-color: var(--primary-color);
+}
+
+.progress-step.active .step-number {
+    background-color: var(--primary-color);
+    color: #000;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(212, 167, 106, 0.2);
+}
+
+.progress-step span {
+    font-size: 0.8rem;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.progress-step.completed span,
+.progress-step.active span {
+    color: var(--primary-color);
+}
+
+.progress-line {
+    width: 120px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-line.completed {
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .progress-line {
+        width: 60px;
+        margin: 0 0.5rem;
+    }
+}
+
+/* Payment Content Layout */
+.payment-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .payment-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Customer Details */
+.customer-details,
+.order-summary,
+.payment-method {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 2rem;
+}
+
+.customer-details h3,
+.order-summary h3,
+.payment-method h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.customer-details h3 i,
+.order-summary h3 i,
+.payment-method h3 i {
+    font-size: 1.1rem;
+}
+
+/* Form Styles */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--light-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--light-color);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(212, 167, 106, 0.1);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+@media (max-width: 576px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Order Summary */
+#order-items {
+    margin-bottom: 2rem;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.order-item-info h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    color: var(--light-color);
+}
+
+.order-item-info p {
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+.order-item-price {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.summary-totals {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--light-color);
+}
+
+.summary-row.total {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.free-delivery-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.free-delivery-note i {
+    color: #4CAF50;
+}
+
+/* Payment Method */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: rgba(212, 167, 106, 0.3);
+    background-color: rgba(212, 167, 106, 0.05);
+}
+
+.payment-option.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(212, 167, 106, 0.1);
+}
+
+.payment-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(212, 167, 106, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.payment-option.selected .payment-icon {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.payment-details h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    color: var(--light-color);
+}
+
+.payment-details p {
+    font-size: 0.8rem;
+    color: #ccc;
+    margin: 0;
+}
+
+.payment-radio {
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2rem;
+}
+
+.payment-option.selected .payment-radio {
+    color: var(--primary-color);
+}
+
+/* Confirm Order Button */
+.confirm-section {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.confirm-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #e69c4a 100%);
+    color: #000;
+    border: none;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 167, 106, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.confirm-btn:hover {
+    background: linear-gradient(135deg, #e69c4a 0%, var(--primary-color) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 167, 106, 0.4);
+}
+
+.confirm-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1002;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(-50px);
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+    color: var(--primary-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.close-modal {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--gray-color);
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.confirmation-message {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.confirmation-message p {
+    color: var(--light-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.important-note {
+    display: flex;
+    gap: 1rem;
+    background-color: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.note-icon {
+    color: #ffc107;
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+}
+
+.note-content p {
+    margin: 0.3rem 0;
+    color: var(--light-color);
+    font-size: 0.9rem;
+}
+
+.order-details {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.order-details h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.order-details p {
+    color: var(--light-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+#order-id {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem 2rem;
+}
+
+.continue-btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--light-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 200px;
+}
+
+.continue-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .payment-section {
+        padding: 4rem 0 2rem;
+    }
+
+    .customer-details,
+    .order-summary,
+    .payment-method {
+        padding: 1.5rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        padding: 0 1.5rem 1.5rem;
+    }
+
+    .important-note {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .note-icon {
+        align-self: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .progress-container {
+        margin-bottom: 2rem;
+    }
+
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+
+    .confirm-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 167, 106, 0.1), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Success Animation */
+.success-animation {
+    animation: successPulse 0.6s ease-in-out;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}

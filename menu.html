@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Full menu of delicious tacos and more. Order online for delivery!">
+    <meta name="keywords" content="taco delivery, order tacos online, Mexican food, taco restaurant, food delivery">
+    <meta name="author" content="Taco Delivery">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>🌮 Full Menu - Taco Town Cafe</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/taco-logo.png">
+    <link rel="apple-touch-icon" href="img/taco-logo.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <span>Taco Town Cafe</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="menu.html" class="active">Menu</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="admin.html">Admin</a>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Full Menu Section -->
+    <section class="full-menu-section">
+        <div class="container">
+            <h1 class="section-title">Our Complete Menu</h1>
+            <p class="section-subtitle">Explore all our delicious offerings</p>
+
+            <!-- Category Accordion -->
+            <div class="category-accordion" id="category-accordion">
+                <!-- Categories will be loaded here by JavaScript -->
+            </div>
+
+            <!-- Cart Floating Button -->
+            <div class="cart-float">
+                <button class="cart-btn" id="cart-toggle">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <span>Total: ₹<span id="cart-total-amount">0.00</span></span>
+        </div>
+        <button class="checkout-btn">Proceed to Payment</button>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>About Taco Town Cafe</h3>
+                    <p>Delivering the most delicious food in town since 2023. Made with love and fresh ingredients.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Taco Street, Foodie City</p>
+                    <p><i class="fas fa-phone"></i> +91 78898 48844</p>
+                    <p><i class="fas fa-envelope"></i> info@tacodelivery.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Taco Town Cafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script type="module" src="js/menu.js"></script>
+</body>
+</html>
