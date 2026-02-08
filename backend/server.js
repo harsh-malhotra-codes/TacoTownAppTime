@@ -163,14 +163,17 @@ app.post('/api/orders', async (req, res) => {
 // Get all orders from Supabase
 app.get('/api/orders', async (req, res) => {
     try {
-        if (!supabase) {
+        // Use admin client if available to bypass RLS, otherwise regular client
+        const client = supabaseAdmin || supabase;
+
+        if (!client) {
             return res.status(500).json({
                 success: false,
                 message: 'Database not configured'
             });
         }
 
-        const { data, error } = await supabase
+        const { data, error } = await client
             .from('orders')
             .select('*')
             .order('created_at', { ascending: false });
@@ -199,7 +202,10 @@ app.get('/api/orders', async (req, res) => {
 // Update order status
 app.put('/api/orders/:orderId', async (req, res) => {
     try {
-        if (!supabase) {
+        // Use admin client if available to bypass RLS, otherwise regular client
+        const client = supabaseAdmin || supabase;
+
+        if (!client) {
             return res.status(500).json({
                 success: false,
                 message: 'Database not configured'
@@ -216,7 +222,7 @@ app.put('/api/orders/:orderId', async (req, res) => {
             });
         }
 
-        const { data, error } = await supabase
+        const { data, error } = await client
             .from('orders')
             .update({ status: status })
             .eq('order_id', orderId)
