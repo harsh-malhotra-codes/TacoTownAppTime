@@ -21,10 +21,10 @@
                 <a href="menu.html">Menu</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="admin.html">Admin</a>
-                <div class="cart-icon">
+                <a class="cart-icon" href="cart.html" aria-label="Cart">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </div>
+                    <span class="cart-count"></span>
+                </a>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -140,7 +140,7 @@
                 <div class="confirm-section">
                     <button id="confirm-order-btn" class="confirm-btn">
                         <i class="fas fa-check"></i>
-                        Confirm Order
+                        Continue
                     </button>
                 </div>
             </div>
@@ -172,9 +172,18 @@
             </div>
             <div class="modal-body">
                 <div class="confirmation-message">
-                    <p>Your order has been successfully placed!</p>
-                    <p>Our team will call you within 1 minute to confirm your order details.</p>
+                    <p>Almost done!</p>
+                    <p>Please click <strong>Confirm Order</strong> to confirm your order.</p>
                 </div>
+
+                <!-- Primary action placed above the Important note -->
+                <div class="modal-actions-top">
+                    <button id="continue-shopping-btn" class="continue-btn continue-btn--primary">
+                        <i class="fas fa-check"></i>
+                        Confirm Order
+                    </button>
+                </div>
+
                 <div class="important-note">
                     <div class="note-icon">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -189,12 +198,6 @@
                     <p><strong>Order ID:</strong> <span id="order-id">#TTC2025001</span></p>
                     <p><strong>Estimated Delivery:</strong> 30-45 minutes</p>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button id="continue-shopping-btn" class="continue-btn">
-                    <i class="fas fa-arrow-left"></i>
-                    Continue Explore
-                </button>
             </div>
         </div>
     </div>

@@ -253,7 +253,10 @@ app.put('/api/orders/:orderId', async (req, res) => {
 // Delete order
 app.delete('/api/orders/:orderId', async (req, res) => {
     try {
-        if (!supabase) {
+        // Use admin client if available to bypass RLS, otherwise regular client
+        const client = supabaseAdmin || supabase;
+
+        if (!client) {
             return res.status(500).json({
                 success: false,
                 message: 'Database not configured'
@@ -262,7 +265,7 @@ app.delete('/api/orders/:orderId', async (req, res) => {
 
         const { orderId } = req.params;
 
-        const { error } = await supabase
+        const { error } = await client
             .from('orders')
             .delete()
             .eq('order_id', orderId);

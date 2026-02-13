@@ -18,8 +18,14 @@ const deliveryForm = document.getElementById('delivery-form');
 // Import menu data
 let menuData = {};
 
+import { loadCart as loadCartUtil, saveCart as saveCartUtil, updateCartBadge } from './cart-utils.js';
+
 // Shopping cart
 let cart = [];
+
+function goToCartPage() {
+    window.location.href = 'cart.html';
+}
 
 // Initialize the app
 async function init() {
@@ -270,16 +276,30 @@ function setupEventListeners() {
         });
     });
     
-    // Cart toggle
-    cartIcon.addEventListener('click', toggleCart);
-    closeCart.addEventListener('click', toggleCart);
+    // Cart button/icon -> cart.html
+    if (cartIcon) {
+        cartIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCartPage();
+        });
+    }
+
+    const cartToggleBtn = document.getElementById('cart-toggle');
+    if (cartToggleBtn) {
+        cartToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCartPage();
+        });
+    }
+
+    if (closeCart) {
+        closeCart.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCartPage();
+        });
+    }
     
-    // Close cart when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) {
-            cartSidebar.classList.remove('active');
-        }
-    });
+    // Sidebar cart UI disabled (no drawer open/close behavior)
     
     // Close modal
     closeModal.addEventListener('click', () => {
@@ -365,9 +385,9 @@ function toggleMobileMenu() {
     hamburger.classList.toggle('active');
 }
 
-// Toggle cart
+// Toggle cart (disabled) -> redirect to cart.html
 function toggleCart() {
-    cartSidebar.classList.toggle('active');
+    goToCartPage();
 }
 
 // Add item to cart
@@ -452,22 +472,20 @@ function updateCartUI() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     cartTotal.textContent = total.toFixed(2);
     
-    // Update cart count in header
-    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.querySelector('.cart-count').textContent = cartCount;
+    // Update cart badge count
+    updateCartBadge(cart);
 }
 
 // Save cart to localStorage
 function saveCart() {
-    localStorage.setItem('tacoCart', JSON.stringify(cart));
+    saveCartUtil(cart);
+    updateCartBadge(cart);
 }
 
 // Load cart from localStorage
 function loadCart() {
-    const savedCart = localStorage.getItem('tacoCart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-    }
+    cart = loadCartUtil();
+    updateCartBadge(cart);
 }
 
 // Handle delivery form submission

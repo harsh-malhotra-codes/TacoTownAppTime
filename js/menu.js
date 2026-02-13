@@ -16,8 +16,14 @@ const deliveryForm = document.getElementById('delivery-form');
 // Import menu data
 import { menuData } from './menu-data-new.js';
 
+import { loadCart as loadCartUtil, saveCart as saveCartUtil, updateCartBadge } from './cart-utils.js';
+
 // Shopping cart
 let cart = [];
+
+function goToCartPage() {
+    window.location.href = 'cart.html';
+}
 
 // Handle delivery form submission
 function handleDeliverySubmit(e) {
@@ -193,22 +199,29 @@ function setupEventListeners() {
         });
     }
 
-    // Cart toggle
+    // Cart button/icon -> cart.html
     if (cartIcon) {
-        cartIcon.addEventListener('click', toggleCart);
-    }
-    if (closeCart) {
-        closeCart.addEventListener('click', toggleCart);
-    }
-
-    // Close cart when clicking outside
-    if (cartSidebar && cartIcon) {
-        document.addEventListener('click', (e) => {
-            if (!cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) {
-                cartSidebar.classList.remove('active');
-            }
+        cartIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCartPage();
         });
     }
+
+    const cartToggleBtn = document.getElementById('cart-toggle');
+    if (cartToggleBtn) {
+        cartToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCartPage();
+        });
+    }
+    if (closeCart) {
+        closeCart.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToCartPage();
+        });
+    }
+
+    // Sidebar cart UI disabled (no drawer open/close behavior)
 
     // Handle cart item quantity changes
     if (cartSidebar) {
@@ -279,11 +292,9 @@ function toggleMobileMenu() {
     }
 }
 
-// Toggle cart
+// Toggle cart (disabled) -> redirect to cart.html
 function toggleCart() {
-    if (cartSidebar) {
-        cartSidebar.classList.toggle('active');
-    }
+    goToCartPage();
 }
 
 // Add item to cart
@@ -378,24 +389,20 @@ function updateCartUI() {
         checkoutBtn.disabled = cart.length === 0;
     }
 
-    // Update cart count in header
-    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.querySelectorAll('.cart-count').forEach(count => {
-        count.textContent = cartCount;
-    });
+    // Update cart badge count
+    updateCartBadge(cart);
 }
 
 // Save cart to localStorage
 function saveCart() {
-    localStorage.setItem('tacoCart', JSON.stringify(cart));
+    saveCartUtil(cart);
+    updateCartBadge(cart);
 }
 
 // Load cart from localStorage
 function loadCart() {
-    const savedCart = localStorage.getItem('tacoCart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-    }
+    cart = loadCartUtil();
+    updateCartBadge(cart);
 }
 
 // Show notification
